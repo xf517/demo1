@@ -1,0 +1,38 @@
+server:  # 服务端口
+  port: 8082
+spring:
+  application:  # 应用名字，eureka 会根据它作为服务id
+    name: user-server
+  datasource:
+    url: jdbc:mysql://cd-cdb-btd7w6ro.sql.tencentcdb.com:62107/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: xufei0517
+    driver-class-name: com.mysql.jdbc.Driver
+
+  redis:
+    # redis数据库索引（默认为0），我们使用索引为3的数据库，避免和其他数据库冲突
+    database: 0
+    # redis服务器地址（默认为localhost）
+    host: 47.117.37.223
+    # redis端口（默认为6379）
+    port: 6379
+    # redis访问密码（默认为空）
+    password: xf123456
+    # redis连接超时时间（单位为毫秒）
+    timeout: 1000
+    # redis连接池配置
+    jedis:
+      pool:
+        # 最大可用连接数（默认为8，负数表示无限）
+        max-active: 8
+        # 最大空闲连接数（默认为8，负数表示无限）
+        max-idle: 8
+        # 最小空闲连接数（默认为0，该值只有为正数才有作用）
+        min-idle: 0
+        # 从连接池中获取连接最大等待时间（默认为-1，单位为毫秒，负数表示无限）
+        max-wait: -1
+
+eureka:
+  client:
+    service-url:   #  eureka server 的地址， 咱们单实例模式就写自己好了
+      defaultZone:  http://localhost:8081/eureka/
